@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
+  server-build:
     name: gRPC Server Build
     runs-on: ubuntu-latest
     defaults:
@@ -28,3 +28,21 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         run: mvn clean test
+
+  beffe-build:
+    name: GraphQL beffe Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: beffe
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Tests
+        run: npm test

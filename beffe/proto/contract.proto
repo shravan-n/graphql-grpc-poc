@@ -26,7 +26,6 @@ message EmptyResponse{
 service ContractService{
   rpc getContract(Contract) returns(Contract){}
   rpc saveContract(Contract) returns (Contract){}
-  rpc updateContract(Contract) returns (Contract){}
   rpc deleteContract(DeleteRequest) returns (DeleteResponse){}
   rpc getContracts(EmptyResponse) returns (stream Contract){}
 }

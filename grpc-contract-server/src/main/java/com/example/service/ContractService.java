@@ -48,13 +48,6 @@ public class ContractService extends ContractServiceGrpc.ContractServiceImplBase
     }
 
     @Override
-    public void updateContract(Contract request, StreamObserver<Contract> responseObserver) {
-        contractRepository.save(contractMapper.convertToContractEntity(request));
-        responseObserver.onNext(request);
-        responseObserver.onCompleted();
-    }
-
-    @Override
     public void getContracts(EmptyResponse request, StreamObserver<Contract> responseObserver) {
         List<ContractEntity> contracts=contractRepository.findAll();
         for(ContractEntity contractEntity:contracts){

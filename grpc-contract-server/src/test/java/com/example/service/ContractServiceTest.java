@@ -92,17 +92,4 @@ class ContractServiceTest {
         Mockito.verify(observer,times(1)).onNext(captor.capture());
     }
 
-    @Test
-    public void updateContractTest() throws Exception{
-        ContractEntity contractEntity=new ContractEntity(1,"Contract1","Monthly",1000,1000);
-        Contract contract=Contract.newBuilder().setContractId(1).setName("Contract1")
-                .setType("Monthly").setPerPayment(1000).setPaymentAmount(1000).build();
-        Mockito.when(contractRepository.save(contractEntity)).thenReturn(contractEntity);
-        Mockito.when(contractMapper.convertToContract(contractEntity)).thenReturn(contract);
-        contractService.updateContract(contract,observer);
-        Mockito.verify(observer,times(1)).onCompleted();
-        ArgumentCaptor<Contract> captor=ArgumentCaptor.forClass(Contract.class);
-        Mockito.verify(observer,times(1)).onNext(captor.capture());
-    }
-
 }

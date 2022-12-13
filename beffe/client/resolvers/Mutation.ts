@@ -39,7 +39,7 @@ export const Mutation = {
         request.setType(contractInput.type);
         request.setPerPayment(contractInput.perPayment);
         request.setPaymentAmount(contractInput.paymentAmount);
-        client.updateContract(request, (err, response) => {
+        client.saveContract(request, (err, response) => {
           if (err) {
             reject(err);
           } else {

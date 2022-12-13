@@ -10,7 +10,6 @@ import * as contract_pb from "./contract_pb";
 interface IContractServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     getContract: IContractServiceService_IgetContract;
     saveContract: IContractServiceService_IsaveContract;
-    updateContract: IContractServiceService_IupdateContract;
     deleteContract: IContractServiceService_IdeleteContract;
     getContracts: IContractServiceService_IgetContracts;
 }
@@ -26,15 +25,6 @@ interface IContractServiceService_IgetContract extends grpc.MethodDefinition<con
 }
 interface IContractServiceService_IsaveContract extends grpc.MethodDefinition<contract_pb.Contract, contract_pb.Contract> {
     path: "/com.example.ContractService/saveContract";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<contract_pb.Contract>;
-    requestDeserialize: grpc.deserialize<contract_pb.Contract>;
-    responseSerialize: grpc.serialize<contract_pb.Contract>;
-    responseDeserialize: grpc.deserialize<contract_pb.Contract>;
-}
-interface IContractServiceService_IupdateContract extends grpc.MethodDefinition<contract_pb.Contract, contract_pb.Contract> {
-    path: "/com.example.ContractService/updateContract";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<contract_pb.Contract>;
@@ -66,7 +56,6 @@ export const ContractServiceService: IContractServiceService;
 export interface IContractServiceServer {
     getContract: grpc.handleUnaryCall<contract_pb.Contract, contract_pb.Contract>;
     saveContract: grpc.handleUnaryCall<contract_pb.Contract, contract_pb.Contract>;
-    updateContract: grpc.handleUnaryCall<contract_pb.Contract, contract_pb.Contract>;
     deleteContract: grpc.handleUnaryCall<contract_pb.DeleteRequest, contract_pb.DeleteResponse>;
     getContracts: grpc.handleServerStreamingCall<contract_pb.EmptyResponse, contract_pb.Contract>;
 }
@@ -78,9 +67,6 @@ export interface IContractServiceClient {
     saveContract(request: contract_pb.Contract, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
     saveContract(request: contract_pb.Contract, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
     saveContract(request: contract_pb.Contract, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
-    updateContract(request: contract_pb.Contract, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
-    updateContract(request: contract_pb.Contract, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
-    updateContract(request: contract_pb.Contract, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
     deleteContract(request: contract_pb.DeleteRequest, callback: (error: grpc.ServiceError | null, response: contract_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     deleteContract(request: contract_pb.DeleteRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: contract_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     deleteContract(request: contract_pb.DeleteRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: contract_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
@@ -96,9 +82,6 @@ export class ContractServiceClient extends grpc.Client implements IContractServi
     public saveContract(request: contract_pb.Contract, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
     public saveContract(request: contract_pb.Contract, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
     public saveContract(request: contract_pb.Contract, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
-    public updateContract(request: contract_pb.Contract, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
-    public updateContract(request: contract_pb.Contract, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
-    public updateContract(request: contract_pb.Contract, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: contract_pb.Contract) => void): grpc.ClientUnaryCall;
     public deleteContract(request: contract_pb.DeleteRequest, callback: (error: grpc.ServiceError | null, response: contract_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     public deleteContract(request: contract_pb.DeleteRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: contract_pb.DeleteResponse) => void): grpc.ClientUnaryCall;
     public deleteContract(request: contract_pb.DeleteRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: contract_pb.DeleteResponse) => void): grpc.ClientUnaryCall;

@@ -77,17 +77,6 @@ var ContractServiceService = (exports.ContractServiceService = {
     responseSerialize: serialize_com_example_Contract,
     responseDeserialize: deserialize_com_example_Contract,
   },
-  updateContract: {
-    path: "/com.example.ContractService/updateContract",
-    requestStream: false,
-    responseStream: false,
-    requestType: contract_pb.Contract,
-    responseType: contract_pb.Contract,
-    requestSerialize: serialize_com_example_Contract,
-    requestDeserialize: deserialize_com_example_Contract,
-    responseSerialize: serialize_com_example_Contract,
-    responseDeserialize: deserialize_com_example_Contract,
-  },
   deleteContract: {
     path: "/com.example.ContractService/deleteContract",
     requestStream: false,
