@@ -1,0 +1,31 @@
+syntax="proto3";
+
+package com.example;
+
+option java_multiple_files=true;
+
+message Contract{
+  int32 contract_id=1;
+  string name=2;
+  string type=3;
+  float per_payment=4;
+  float payment_amount=5;
+}
+
+message DeleteRequest{
+  int32 id=1;
+}
+
+message DeleteResponse{
+  int32 id=1;
+}
+
+message EmptyResponse{
+}
+
+service ContractService{
+  rpc getContract(Contract) returns(Contract){}
+  rpc saveContract(Contract) returns (Contract){}
+  rpc deleteContract(DeleteRequest) returns (DeleteResponse){}
+  rpc getContracts(EmptyResponse) returns (stream Contract){}
+}
